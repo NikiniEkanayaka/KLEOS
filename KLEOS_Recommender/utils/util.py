@@ -1,5 +1,5 @@
 import yaml
-from KLEOS_Recommender.exception.exception_handler.py import AppException
+from KLEOS_Recommender.exception.exception_handler import AppException
 
 def read_yaml_file(file_path: str) -> dict:
     """
