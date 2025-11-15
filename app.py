@@ -4,5 +4,6 @@ import pickle
 import streamlit as st
 import numpy as np
 from KLEOS_Recommender.exception.exception_handler import AppException
+from KLEOS_Recommender.logger.log import logging
 
 
