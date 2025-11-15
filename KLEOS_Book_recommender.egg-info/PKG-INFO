@@ -1,0 +1,26 @@
+Metadata-Version: 2.4
+Name: KLEOS_Book_recommender
+Version: 0.0.1
+Summary: A machine learning based book recommender system.
+Home-page: https://github.com/NikiniEkanayaka/KLEOS.git
+Author: Nikini Ekanayaka
+Author-email: nikiniekanayaka00@gmail.com
+License: MIT
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: scikit-learn
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: PyYAML
+Requires-Dist: streamlit
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+A machine learning-based book recommender system.
