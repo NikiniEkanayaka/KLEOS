@@ -5,7 +5,7 @@ from KLEOS_Recommender.exception.exception_handler import AppException
 from KLEOS_Recommender.logger.log import logging
 from KLEOS_Recommender.entity.config_entity import (
     DataIngestionConfig,
-    # DataValidationConfig,
+    DataValidationConfig,
     # DataTransformationConfig,
     # ModelTrainerConfig,
     # ModelRecommendationConfig
@@ -44,54 +44,54 @@ class AppConfiguration:
         except Exception as e:
             raise AppException(e, sys) from e
 
-    # # -------------------------------------------------------
-    # # DATA VALIDATION CONFIG
-    # # -------------------------------------------------------
-    # def get_data_validation_config(self) -> DataValidationConfig:
-    #     try:
-    #         vcfg = self.configs_info['data_validation_config']
-    #         icfg = self.get_data_ingestion_config()
+    # -------------------------------------------------------
+    # DATA VALIDATION CONFIG
+    # -------------------------------------------------------
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+            vcfg = self.configs_info['data_validation_config']
+            icfg = self.get_data_ingestion_config()
 
-    #         artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
 
-    #         books_csv_file = os.path.join(icfg.ingested_dir, vcfg['books_csv_file'])
-    #         ratings_csv_file = os.path.join(icfg.ingested_dir, vcfg['ratings_csv_file'])
-    #         clean_data_dir = os.path.join(artifacts_dir, vcfg['clean_data_dir'])
-    #         serialized_objects_dir = os.path.join(artifacts_dir, vcfg['serialized_objects_dir'])
+            books_csv_file = os.path.join(icfg.ingested_dir, vcfg['books_csv_file'])
+            ratings_csv_file = os.path.join(icfg.ingested_dir, vcfg['ratings_csv_file'])
+            clean_data_dir = os.path.join(artifacts_dir, vcfg['clean_data_dir'])
+            serialized_objects_dir = os.path.join(artifacts_dir, vcfg['serialized_objects_dir'])
 
-    #         response = DataValidationConfig(
-    #             clean_data_dir=clean_data_dir,
-    #             books_csv_file=books_csv_file,
-    #             ratings_csv_file=ratings_csv_file,
-    #             serialized_objects_dir=serialized_objects_dir
-    #         )
-    #         logging.info(f"Data Validation Config: {response}")
-    #         return response
+            response = DataValidationConfig(
+                clean_data_dir=clean_data_dir,
+                books_csv_file=books_csv_file,
+                ratings_csv_file=ratings_csv_file,
+                serialized_objects_dir=serialized_objects_dir
+            )
+            logging.info(f"Data Validation Config: {response}")
+            return response
 
-    #     except Exception as e:
-    #         raise AppException(e, sys) from e
+        except Exception as e:
+            raise AppException(e, sys) from e
 
-    # # -------------------------------------------------------
-    # # DATA TRANSFORMATION CONFIG
-    # # -------------------------------------------------------
-    # def get_data_transformation_config(self) -> DataTransformationConfig:
-    #     try:
-    #         tcfg = self.configs_info['data_transformation_config']
-    #         vcfg = self.get_data_validation_config()
+    # -------------------------------------------------------
+    # DATA TRANSFORMATION CONFIG
+    # -------------------------------------------------------
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        try:
+            tcfg = self.configs_info['data_transformation_config']
+            vcfg = self.get_data_validation_config()
 
-    #         clean_data_file = os.path.join(vcfg.clean_data_dir, "clean_data.csv")
-    #         artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
-    #         transformed_data_dir = os.path.join(artifacts_dir, tcfg['transformed_data_dir'])
+            clean_data_file = os.path.join(vcfg.clean_data_dir, "clean_data.csv")
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            transformed_data_dir = os.path.join(artifacts_dir, tcfg['transformed_data_dir'])
 
-    #         response = DataTransformationConfig(
-    #             clean_data_file_path=clean_data_file,
-    #             transformed_data_dir=transformed_data_dir
-    #         )
-    #         logging.info(f"Data Transformation Config: {response}")
-    #         return response
+            response = DataTransformationConfig(
+                clean_data_file_path=clean_data_file,
+                transformed_data_dir=transformed_data_dir
+            )
+            logging.info(f"Data Transformation Config: {response}")
+            return response
 
-    #     except Exception as e:
-    #         raise AppException(e, sys) from e
+        except Exception as e:
+            raise AppException(e, sys) from e
 
     # # -------------------------------------------------------
     # # MODEL TRAINER CONFIG

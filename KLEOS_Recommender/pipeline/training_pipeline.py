@@ -1,7 +1,7 @@
 from KLEOS_Recommender.components.stage_00_data_ingestion import DataIngestion
-# from books_recommender.components.stage_01_data_validation import DataValidation
-# from books_recommender.components.stage_02_data_transformation import DataTransformation
-# from books_recommender.components.stage_03_model_trainer import ModelTrainer
+from KLEOS_Recommender.components.stage_01_data_validation import DataValidation
+# from KLEOS_Recommender.components.stage_02_data_transformation import DataTransformation
+# from KLEOS_Recommender.components.stage_03_model_trainer import ModelTrainer
 
 from KLEOS_Recommender.logger.log import logging
 from KLEOS_Recommender.exception.exception_handler import AppException
@@ -15,7 +15,7 @@ class TrainingPipeline:
             logging.info("Initializing TrainingPipeline...")
 
             self.data_ingestion = DataIngestion()
-            # self.data_validation = DataValidation()
+            self.data_validation = DataValidation()
             # self.data_transformation = DataTransformation()
             # self.model_trainer = ModelTrainer()
 
@@ -35,9 +35,9 @@ class TrainingPipeline:
             logging.info("Starting: Data Ingestion...")
             ingestion_output = self.data_ingestion.initiate_data_ingestion()
 
-            # # 2️⃣ Data Validation
-            # logging.info("Starting: Data Validation...")
-            # validation_output = self.data_validation.initiate_data_validation()
+            # 2️⃣ Data Validation
+            logging.info("Starting: Data Validation...")
+            validation_output = self.data_validation.initiate_data_validation()
 
             # # 3️⃣ Data Transformation
             # logging.info("Starting: Data Transformation...")
@@ -51,7 +51,7 @@ class TrainingPipeline:
 
             return {
                 "ingestion": ingestion_output,
-                # "validation": validation_output,
+                "validation": validation_output,
                 # "transformation": transformation_output,
                 # "model": model_output
             }
