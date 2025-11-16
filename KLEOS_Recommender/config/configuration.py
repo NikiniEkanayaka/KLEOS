@@ -7,7 +7,7 @@ from KLEOS_Recommender.entity.config_entity import (
     DataIngestionConfig,
     DataValidationConfig,
     DataTransformationConfig,
-    # ModelTrainerConfig,
+    ModelTrainerConfig,
     # ModelRecommendationConfig
 )
 from KLEOS_Recommender.constant import *
@@ -93,31 +93,32 @@ class AppConfiguration:
         except Exception as e:
             raise AppException(e, sys) from e
 
-    # # -------------------------------------------------------
-    # # MODEL TRAINER CONFIG
-    # # -------------------------------------------------------
-    # def get_model_trainer_config(self) -> ModelTrainerConfig:
-    #     try:
-    #         mcfg = self.configs_info['model_trainer_config']
-    #         tcfg = self.get_data_transformation_config()
-    #         artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+    # -------------------------------------------------------
+    # MODEL TRAINER CONFIG
+    # -------------------------------------------------------
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        try:
+            mcfg = self.configs_info['model_trainer_config']
+            tcfg = self.get_data_transformation_config()
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
 
-    #         transformed_data_file_dir = os.path.join(
-    #             tcfg.transformed_data_dir,
-    #             "transformed_data.pkl"
-    #         )
-    #         trained_model_dir = os.path.join(artifacts_dir, mcfg['trained_model_dir'])
+            transformed_data_file_dir = os.path.join(
+                tcfg.transformed_data_dir,
+                "transformed_data.pkl"
+            )
+            trained_model_dir = os.path.join(artifacts_dir, mcfg['trained_model_dir'])
 
-    #         response = ModelTrainerConfig(
-    #             transformed_data_file_dir=transformed_data_file_dir,
-    #             trained_model_dir=trained_model_dir,
-    #             trained_model_name=mcfg['trained_model_name']
-    #         )
-    #         logging.info(f"Model Trainer Config: {response}")
-    #         return response
+            response = ModelTrainerConfig(
+                transformed_data_file_dir=transformed_data_file_dir,
+                trained_model_dir=trained_model_dir,
+                trained_model_name=mcfg['trained_model_name']
+            )
+            
+            logging.info(f"Model Trainer Config: {response}")
+            return response
 
-    #     except Exception as e:
-    #         raise AppException(e, sys) from e
+        except Exception as e:
+            raise AppException(e, sys) from e
 
     # # -------------------------------------------------------
     # # RECOMMENDATION CONFIG
