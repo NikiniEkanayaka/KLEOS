@@ -40,13 +40,12 @@ ModelTrainerConfig = namedtuple("ModelTrainerConfig", [
 ])
 
 
-# # ---------------------------------------------------------
-# # MODEL RECOMMENDATION CONFIG
-# # ---------------------------------------------------------
-# ModelRecommendationConfig = namedtuple("ModelRecommendationConfig", [
-#     "book_name_serialized_objects",
-#     "book_pivot_serialized_objects",
-#     "final_rating_serialized_objects",
-#     "trained_model_path",
-#     "poster_api_url"
-# ])
+# ---------------------------------------------------------
+# MODEL RECOMMENDATION CONFIG
+# ---------------------------------------------------------
+ModelRecommendationConfig = namedtuple("ModelRecommendationConfig", [
+    "book_name_serialized_objects",
+    "book_pivot_serialized_objects",
+    "final_rating_serialized_objects",
+    "trained_model_path"
+])

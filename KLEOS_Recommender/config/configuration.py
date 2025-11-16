@@ -8,7 +8,7 @@ from KLEOS_Recommender.entity.config_entity import (
     DataValidationConfig,
     DataTransformationConfig,
     ModelTrainerConfig,
-    # ModelRecommendationConfig
+    ModelRecommendationConfig
 )
 from KLEOS_Recommender.constant import *
 
@@ -120,27 +120,27 @@ class AppConfiguration:
         except Exception as e:
             raise AppException(e, sys) from e
 
-    # # -------------------------------------------------------
-    # # RECOMMENDATION CONFIG
-    # # -------------------------------------------------------
-    # def get_recommendation_config(self) -> ModelRecommendationConfig:
-    #     try:
-    #         vcfg = self.get_data_validation_config()
-    #         mcfg = self.get_model_trainer_config()
+    # -------------------------------------------------------
+    # RECOMMENDATION CONFIG
+    # -------------------------------------------------------
+    def get_recommendation_config(self) -> ModelRecommendationConfig:
+        try:
+            vcfg = self.get_data_validation_config()
+            mcfg = self.get_model_trainer_config()
 
-    #         serialized_dir = vcfg.serialized_objects_dir
+            serialized_dir = vcfg.serialized_objects_dir
 
-    #         response = ModelRecommendationConfig(
-    #             book_name_serialized_objects=os.path.join(serialized_dir, "book_names.pkl"),
-    #             book_pivot_serialized_objects=os.path.join(serialized_dir, "book_pivot.pkl"),
-    #             final_rating_serialized_objects=os.path.join(serialized_dir, "final_rating.pkl"),
-    #             trained_model_path=os.path.join(
-    #                 mcfg.trained_model_dir,
-    #                 mcfg.trained_model_name
-    #             )
-    #         )
-    #         logging.info(f"Model Recommendation Config: {response}")
-    #         return response
+            response = ModelRecommendationConfig(
+                book_name_serialized_objects=os.path.join(serialized_dir, "book_names.pkl"),
+                book_pivot_serialized_objects=os.path.join(serialized_dir, "book_pivot.pkl"),
+                final_rating_serialized_objects=os.path.join(serialized_dir, "final_rating.pkl"),
+                trained_model_path=os.path.join(
+                    mcfg.trained_model_dir,
+                    mcfg.trained_model_name
+                )
+            )
+            logging.info(f"Model Recommendation Config: {response}")
+            return response
 
-    #     except Exception as e:
-    #         raise AppException(e, sys) from e
+        except Exception as e:
+            raise AppException(e, sys) from e
