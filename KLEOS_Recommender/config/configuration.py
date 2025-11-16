@@ -6,7 +6,7 @@ from KLEOS_Recommender.logger.log import logging
 from KLEOS_Recommender.entity.config_entity import (
     DataIngestionConfig,
     DataValidationConfig,
-    # DataTransformationConfig,
+    DataTransformationConfig,
     # ModelTrainerConfig,
     # ModelRecommendationConfig
 )
